@@ -14,7 +14,8 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["post"] = Post.objects.latest('published_on')
-
+        context["series"] = Post.objects.filter(series=context["post"].series) \
+                .values_list('id', 'title', 'published_on', 'slug')
         return context
     
 

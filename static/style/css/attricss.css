@@ -98,7 +98,7 @@ html {
 }
 nav {
   font-family: 'Merriweather', serif;
-  background-color: #eee;
+  background-color: #fff;
   color: #252525;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -129,12 +129,15 @@ nav div ul {
   display: -ms-flexbox;
   display: flex;
   margin: 0 10px;
+  height: 100%;
 }
 nav div ul li a {
-  display: inline-block;
-  padding: 8px 10px;
+  display: flex;
+  padding: 0 10px;
+  height: 100%;
   color: #252525;
   text-decoration: none;
+  align-items: center;
 }
 nav div ul li a:hover {
     color: white;
@@ -167,15 +170,23 @@ nav div ul li ul {
     padding: 0;
   }
   nav div ul li {
+    box-sizing: border-box;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     margin: auto 2px;
+    border: 2px solid #fff;
+    border-bottom: none;
   }
   nav div ul li[active],
   nav div ul li.active {
-    border: 1px solid #00e974;
+    border: 2px solid #00e974;
     border-bottom: none;
   }
+
+  nav div ul li a {
+    padding: 8px 10px;
+  }
+
   blockquote {
     border-left: 4px solid #00e974;
     padding: 8px 5px;
@@ -188,7 +199,7 @@ nav div ul li ul {
 @media (min-width: 630px) {
   nav div ul li.active,
   nav div ul li[active] {
-    border: 1px solid #00e974;
+    border: 1.5px solid #00e974;
     border-bottom: none;
     border-top: none;
   }

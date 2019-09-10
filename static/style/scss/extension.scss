@@ -2,102 +2,151 @@ $card_color: #00e974;
 $card_hover: rgb(228, 255, 246);
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 body {
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
 [container] {
-    max-width: 48em !important;
+  max-width: 48em !important;
 }
 
 [card] {
-    display: flex;
-    padding: 10px;
-    border: 1px solid $card_color;
-    border-radius: 5px;
-    margin: 10px 7px 20px 7px;
-    box-sizing: border-box;
+  display: flex;
+  padding: 10px;
+  border: 1px solid $card_color;
+  border-radius: 5px;
+  margin: 10px 7px 20px 7px;
+  box-sizing: border-box;
+  img {
+    margin-right: 20px;
+    height: 250px;
+    max-width: 40%;
+  }
+  h3,
+  h5 {
+    margin: 5px;
+  }
+
+  h5 {
+    color: rgb(131, 131, 131);
+  }
+
+  box-shadow: 6px 6px $card_color;
+  transform: translate(0px, 0px);
+  cursor: pointer;
+
+  &:active {
+    box-shadow: none;
+    transform: translate(6px, 6px);
+    transition: all 0.1s;
+  }
+
+  &:hover {
+    background-color: $card_hover;
+  }
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    align-items: center;
     img {
-        margin-right: 20px;
-        height: 250px;
-        max-width: 40%;
+      margin: 0;
+      height: unset;
+      max-width: 100%;
     }
-    h3, h5 {
-        margin: 5px;
-    }
-
-    h5 {
-
-        color: rgb(131, 131, 131);
-    }
-
-    box-shadow: 6px 6px $card_color;
-    transform: translate(0px, 0px);
-    cursor: pointer;
-
-    &:active {
-        box-shadow:none;
-        transform: translate(6px, 6px);
-        transition: all 0.1s;
-    }
-
-    &:hover {
-        background-color: $card_hover;
-    }
-
-    @media (max-width: 500px) {
-        flex-direction: column;
-        align-items: center;
-        img {
-            margin: 0;
-            height: unset;
-            max-width: 100%;
-        }
-    }
+  }
 }
 
 [container][detail] {
+  padding: 0 25px;
 
-    padding: 0 25px;
+  [title] {
+    font-size: 4em;
+    font-weight: 400;
+    margin-bottom: 0;
+  }
 
+  [subtitle] {
+    margin: 10px auto;
+    font-size: 1.5em;
+    font-weight: lighter;
+    color: #313131;
+  }
+
+  [date] {
+    margin: 20px auto;
+    font-weight: lighter;
+  }
+
+  @media (max-width: 500px) {
     [title] {
-        font-size: 4em;
-        font-weight: 400;
-        margin-bottom: 0;
+      font-size: 2em;
     }
-
     [subtitle] {
-        margin: 10px auto;
-        font-size: 1.5em;
-        font-weight: lighter;
-        color: #313131;
+      font-size: 1.2em;
     }
+  }
 
-    [date] {
-        margin: 20px auto;
-        font-weight: lighter;
+  img {
+    & + em {
+      text-align: right;
+      padding-right: 5px;
+      display: block;
+      font-size: 11px !important;
+      color: #aaaaaa;
+      * {
+        font-size: inherit !important;
+      }
     }
+  }
+}
 
-    @media (max-width: 500px) {
-        [title] {
-            font-size: 2em;
-        }  
-        [subtitle] {
-            font-size: 1.2em;
-        } 
-    }
+.tb-logo {
+  display: flex;
+  // height: 23px;
+  // width: 23px;
 
-    img {
-        &+em {
-            text-align: right;
-            padding-right: 5px;
-            display: block;
-            font-size: 11px !important;
-            color: #aaaaaa;
-            * {font-size: inherit !important; }
-        }
+  justify-content: center;
+  align-items: center;
+
+  perspective: 100px;
+  &:hover .logo {
+    transition: transform 0.2s;
+    transform: rotateY(45deg);
+  }
+  .logo {
+    transition: transform 0.2s;
+    border-radius: 5px;
+    margin-right: 8px;
+    display: inherit;
+    .l {
+      font-family: monospace;
+      border: 2px solid dodgerblue;
+      border-right: none;
+      color: white;
+      background-color: black;
+      padding: 5px;
+      border-top-left-radius: inherit;
+      border-bottom-left-radius: inherit;
     }
+    .r {
+      font-family: monospace;
+      border: 2px solid #00e974;
+      border-left: none;
+      color: black;
+      background-color: white;
+      padding: 5px;
+      border-top-right-radius: inherit;
+      border-bottom-right-radius: inherit;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .logo {
+        transform-style: preserve-3d;
+        transform: rotateY(45deg);
+    }
+  }
 }

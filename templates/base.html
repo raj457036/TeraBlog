@@ -1,4 +1,5 @@
 {% load static %}
+{% load config %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{% static 'style/css/attricss.css' %}">
     <link rel="stylesheet" href="{% static 'style/css/extension.min.css' %}">
-    <title>{% block title %}TeraBlog - Designed For Readers{% endblock title %}</title>
+    <title>{% block title %}Designed For Readers{% endblock title %} - {{ 'title' | conf }}</title>
 </head>
 <body>
     {% block navbar %}

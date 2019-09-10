@@ -26,7 +26,7 @@ SECRET_KEY = 'woi9&(%c0dlnvi_xsjxtmel8#m$q2+9xte$ufquom0+y&4cdkc'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -164,4 +164,10 @@ MDEDITOR_CONFIGS = {
         'language': 'en'
     }
     
+}
+
+CONFIG = {
+    'title': 'TeraBlog',
+    'header': 'TeraBlog',
+    'index_title': 'TeraBlog'
 }
