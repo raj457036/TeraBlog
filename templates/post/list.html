@@ -1,0 +1,7 @@
+<section container>
+    {% for post in posts %}
+        <a href="{% url 'post-detail' slug=post.slug %}">{% include 'post/card.html' with post=post %}</a>
+    {% empty %}
+        <p><center>No Post Available 😥</center></p>
+    {% endfor %}
+</section>

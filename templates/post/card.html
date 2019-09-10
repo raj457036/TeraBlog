@@ -1,0 +1,11 @@
+{% load markdown_filter %}
+
+<div card>
+    <img src="https://source.unsplash.com/random/1920x1080" alt="{{ post.title }}">
+    <div>
+        <h3>{{ post.title | truncatewords:7 }}</h3>
+        <h5>{{ post.sub_title | truncatewords:5 }}</h5>
+        <p>{{ post.content | truncatewords:14 }}</p>
+        <small>Published On <i>{{ post.published_on.date }}</i></small>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %} Archives {% endblock title %}
+
+{% block content %}
+    <section container style='padding:0 16px;'>
+    <h1>Archives</h1>
+    {% if request.resolver_match.url_name == 'archive' %}
+        <div>
+            <b>Filter by: </b>
+            <select name="filter" id="filter">
+                <option value="posts" {% if request.GET.filter == "posts" %} selected {% endif %}>Posts</option>
+                <option value="series" {% if request.GET.filter == "series" %} selected {% endif %}>Series</option>
+            </select>
+        </div>
+        <br>
+    {% else %}
+        <h4>Archive of {{posts.0.3}}</h4>
+    {% endif %}
+    
+    {% if posts %}
+        {% for post in posts %}
+            <p><b>{{ post.0.date }} : </b> <a href="{% url 'post-detail' slug=post.1 %}">{{ post.2 }}</a></p>
+        {% endfor %}
+        
+    {% elif series %}
+        <div overflow>
+            <table style='width: 100%'>
+                <thead>
+                    <tr>
+                        <th>S.no</th>
+                        <th>Date</th>
+                        <th>Name</th>
+                        <th>No of Posts</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for s in series %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ s.2.date }}</td>
+                            <td><a href="{% url 'series' slug=s.0 %}">{{ s.1 }}</a></td>
+                            <td>{{ s.3 }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div> 
+    {% endif %}
+
+    </section>
+
+{% endblock content %}
+
+{% block script %}
+<script>
+    const filter = document.querySelector('#filter');
+    filter.addEventListener('change', () => location.href = '?filter='+filter.value);
+</script>
+{% endblock script %}

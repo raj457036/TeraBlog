@@ -1,0 +1,11 @@
+{
+    "python.pythonPath": "venv\\Scripts\\python3.exe",
+    "liveSassCompile.settings.formats":[
+        // This is Default.
+        {
+            "format": "compressed",
+            "extensionName": ".min.css",
+            "savePath": "static/style/css",
+        }
+    ]
+}

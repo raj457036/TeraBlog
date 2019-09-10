@@ -1,0 +1,59 @@
+{% load static %} {% load markdown_filter %} 
+
+<section container detail>
+  <h1 title>{{ post.title }}</h1>
+  <h3 subtitle>{{ post.sub_title }}</h3>
+  <h6 date>Published On {{ post.published_on.date }}</h6>
+    <small>Series: <a href="{% url 'series' slug=post.series.slug %}">{{post.series.name}}</a></small>
+  <hr />
+  <div>
+    {{ post.content | show_markdown | safe }}
+  </div>
+
+    {% comment %} More Article in same series {% endcomment %}
+    <hr>
+    <h4>More Articles in {{ post.series.name }}</h4>
+    <ol>
+        {% for p in series %}
+            
+            <li><b>{{ p.2.date }}</b> : 
+                {% if p.0 != post.id %}
+                    <a href="{% url 'post-detail' slug=p.3 %}">{{ p.1 }}</a>
+                {% else %}
+                    {{ p.1 }}
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ol>
+
+    {% comment %} comment section {% endcomment %}
+    {% comment %} <hr />
+    <h3>Comments</h3>
+    <form>
+        <div> 
+            <textarea name="" id="" cols="30" rows="10" placeholder="Write your Comment here..."></textarea>
+        </div>
+        <div> 
+            <input type="text" id="input" placeholder="Your name"> 
+        </div>
+        <div>
+            <button primary><b>Submit</b></button>
+        </div>
+    </form> {% endcomment %}
+</section>
+
+
+
+
+<link rel="stylesheet" href="{% static 'style/css/highlight.css' %}" />
+<script>
+  const pres = document.querySelectorAll("pre");
+  for (const pre of pres) {
+    pre.classList.add("prettyprint", "linenums");
+  }
+  const codes = document.querySelectorAll("code");
+  for (const code of codes) {
+    code.classList.add("prettyprint");
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
